@@ -6,12 +6,15 @@
 URL: https://github.com/2101070-LJI/lamp-iot-monitor
 
 [동작 영상]
-URL: (동작 영상 촬영 후 YouTube/Google Drive 링크 입력)
+URL: (동작 영상 업로드 후 링크 입력 예정)
+
+[GitHub Repository Name]
+lamp-iot-monitor
 
 [제출자 정보]
 이름:
-학번:
-날짜:
+학번: 2101070
+날짜: 2026-03-19
 
 [주요 구현 내용]
 1. VMware + Ubuntu 24.04 LTS 환경 구성
