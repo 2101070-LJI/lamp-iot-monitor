@@ -1,9 +1,5 @@
 # Project: LAMP Stack Real-Time Sensor Data Monitoring System
 
-## 과목 정보
-- 과목: 캡스톤 디자인 / 임베디드 리눅스
-- 주차: 3주차 과제
-
 ## 프로젝트 개요
 
 VMware에 Ubuntu 24.04를 설치하고 LAMP 스택(Linux, Apache, MySQL, PHP)을 구성하여,

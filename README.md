@@ -1,6 +1,5 @@
 # LAMP Stack IoT 실시간 센서 모니터링 시스템
 
-> 캡스톤 디자인 / 임베디드 리눅스 — 3주차 과제
 
 ## 개요
 
@@ -76,3 +75,4 @@ http://localhost/api.php      ← JSON API
 
 - [전체 구현 과정 및 시스템 블록도 → process.md](./process.md)
 - [프로젝트 설명 → project.md](./project.md)
+- [동작 영상 → docs/동작영상.mp4](./docs/동작영상.mp4)

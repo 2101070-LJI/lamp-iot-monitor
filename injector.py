@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 injector.py - 가상 IoT 센서 데이터 생성 및 MySQL 주입 프로그램
-캡스톤 디자인 3주차 과제
+IoT 센서 데이터 생성·MySQL 주입 프로그램
 
 사용법:
     python3 injector.py              # 기본 실행 (5초 간격)

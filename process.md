@@ -1,6 +1,6 @@
 # Process Documentation
 
-## 캡스톤 디자인 3주차 - LAMP Stack IoT 모니터링 시스템 구축 과정
+## LAMP Stack IoT 모니터링 시스템 구축 과정
 
 ---
 
@@ -170,8 +170,8 @@ sudo chown -R www-data:www-data /var/www/html/
 cd ~/Desktop/project2
 git init
 git add .
-git commit -m "feat: LAMP Stack IoT monitoring system (Week 3 assignment)"
-git remote add origin https://github.com/<YOUR_GITHUB_ID>/capstone-week3-lamp.git
+git commit -m "feat: LAMP Stack IoT monitoring system"
+git remote add origin https://github.com/2101070-LJI/lamp-iot-monitor.git
 git push -u origin main
 ```
 

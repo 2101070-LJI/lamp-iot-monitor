@@ -1,7 +1,7 @@
 <?php
 /**
  * index.php - IoT 센서 실시간 모니터링 대시보드
- * 캡스톤 디자인 3주차 과제
+ * IoT 센서 실시간 모니터링 대시보드
  */
 
 // DB 접속 설정
@@ -156,7 +156,7 @@ $conn->close();
 </main>
 
 <footer>
-    <p>캡스톤 디자인 3주차 &mdash; LAMP Stack IoT Monitoring &copy; <?= date('Y') ?></p>
+    <p>LAMP Stack IoT Monitoring &copy; <?= date('Y') ?></p>
 </footer>
 
 <script>
