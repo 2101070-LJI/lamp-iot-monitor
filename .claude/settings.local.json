@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(apache2 -v 2>/dev/null && echo \"Apache: OK\" || echo \"Apache: NOT installed\"\nmysql --version 2>/dev/null && echo \"MySQL: OK\" || echo \"MySQL: NOT installed\"\nphp -v 2>/dev/null | head -1 && echo \"PHP: OK\" || echo \"PHP: NOT installed\"\npython3 --version 2>/dev/null && echo \"Python3: OK\" || echo \"Python3: NOT installed\")",
+      "Bash(systemctl is-active apache2 && systemctl is-active mysql)",
+      "Bash(mysql -u root -e \"SHOW DATABASES;\" 2>&1)",
+      "Bash(mysql -u lee -e \"SHOW DATABASES;\" 2>&1\nmysql -u lee -ples -e \"SHOW DATABASES;\" 2>&1)",
+      "Bash(ls /etc/mysql/ 2>/dev/null && cat /etc/mysql/mysql.conf.d/*.cnf 2>/dev/null | head -30)",
+      "Bash(printf 'lee\\\\n' | sudo -S -p '' mysql -e \"SHOW DATABASES;\" 2>&1)",
+      "Bash(printf 'lee\\\\n' | sudo -S mysql -e \"SHOW DATABASES;\" 2>&1)",
+      "Bash(printf 'lee\\\\n' | sudo -S mysql 2>/dev/null <<'ENDSQL'\nCREATE DATABASE IF NOT EXISTS sensor_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;\nUSE sensor_db;\nCREATE USER IF NOT EXISTS 'sensor_user'@'localhost' IDENTIFIED BY 'sensor_pass123';\nGRANT ALL PRIVILEGES ON sensor_db.* TO 'sensor_user'@'localhost';\nFLUSH PRIVILEGES;\nCREATE TABLE IF NOT EXISTS sensor_data \\(\n    id          INT AUTO_INCREMENT PRIMARY KEY,\n    sensor_id   VARCHAR\\(20\\)    NOT NULL,\n    sensor_name VARCHAR\\(50\\)    NOT NULL,\n    temperature DECIMAL\\(5, 2\\)  NOT NULL,\n    humidity    DECIMAL\\(5, 2\\)  NOT NULL,\n    pressure    DECIMAL\\(7, 2\\)  NOT NULL,\n    light       INT            NOT NULL,\n    status      VARCHAR\\(10\\)    NOT NULL DEFAULT 'OK',\n    recorded_at TIMESTAMP      NOT NULL DEFAULT CURRENT_TIMESTAMP,\n    INDEX idx_sensor_id   \\(sensor_id\\),\n    INDEX idx_recorded_at \\(recorded_at\\)\n\\) ENGINE=InnoDB;\nINSERT INTO sensor_data \\(sensor_id, sensor_name, temperature, humidity, pressure, light, status\\) VALUES\n\\('SENS-001', 'Room A Sensor',   24.50, 55.30, 1013.25, 350, 'OK'\\),\n\\('SENS-002', 'Room B Sensor',   22.10, 60.00, 1012.80, 200, 'OK'\\),\n\\('SENS-003', 'Outdoor Sensor',  18.75, 72.50, 1010.00, 800, 'OK'\\);\nSELECT 'DB setup complete!' AS result;\nSELECT COUNT\\(*\\) AS rows FROM sensor_db.sensor_data;\nENDSQL)",
+      "Bash(printf 'lee\\\\n' | sudo -S mysql -e \"CREATE DATABASE IF NOT EXISTS sensor_db CHARACTER SET utf8mb4;\" 2>/dev/null && echo \"DB created\")",
+      "Bash(printf 'lee\\\\n' | sudo -S mysql sensor_db 2>/dev/null -e \"\nCREATE USER IF NOT EXISTS 'sensor_user'@'localhost' IDENTIFIED BY 'sensor_pass123';\nGRANT ALL PRIVILEGES ON sensor_db.* TO 'sensor_user'@'localhost';\nFLUSH PRIVILEGES;\n\" && echo \"User created\"\n\nprintf 'lee\\\\n' | sudo -S mysql sensor_db 2>/dev/null -e \"\nCREATE TABLE IF NOT EXISTS sensor_data \\(\n    id          INT AUTO_INCREMENT PRIMARY KEY,\n    sensor_id   VARCHAR\\(20\\)    NOT NULL,\n    sensor_name VARCHAR\\(50\\)    NOT NULL,\n    temperature DECIMAL\\(5,2\\)   NOT NULL,\n    humidity    DECIMAL\\(5,2\\)   NOT NULL,\n    pressure    DECIMAL\\(7,2\\)   NOT NULL,\n    light       INT            NOT NULL,\n    status      VARCHAR\\(10\\)    NOT NULL DEFAULT 'OK',\n    recorded_at TIMESTAMP      NOT NULL DEFAULT CURRENT_TIMESTAMP,\n    INDEX idx_sensor_id\\(sensor_id\\),\n    INDEX idx_recorded_at\\(recorded_at\\)\n\\) ENGINE=InnoDB;\n\" && echo \"Table created\")",
+      "Bash(printf 'lee\\\\n' | sudo -S mysql sensor_db 2>/dev/null -e \"\nINSERT INTO sensor_data \\(sensor_id, sensor_name, temperature, humidity, pressure, light, status\\) VALUES\n\\('SENS-001', 'Room A Sensor',   24.50, 55.30, 1013.25, 350, 'OK'\\),\n\\('SENS-002', 'Room B Sensor',   22.10, 60.00, 1012.80, 200, 'OK'\\),\n\\('SENS-003', 'Outdoor Sensor',  18.75, 72.50, 1010.00, 800, 'OK'\\),\n\\('SENS-004', 'Server Room',     20.00, 40.00, 1011.50, 150, 'OK'\\),\n\\('SENS-005', 'Warehouse',       15.00, 65.00, 1009.00, 500, 'OK'\\);\nSELECT COUNT\\(*\\) AS total_rows FROM sensor_data;\n\" && echo \"Initial data inserted\")",
+      "Bash(printf 'lee\\\\n' | sudo -S cp /home/lee/Desktop/project2/web/index.php /var/www/html/ 2>/dev/null\nprintf 'lee\\\\n' | sudo -S cp /home/lee/Desktop/project2/web/monitor.php /var/www/html/ 2>/dev/null\nprintf 'lee\\\\n' | sudo -S cp /home/lee/Desktop/project2/web/api.php /var/www/html/ 2>/dev/null\nprintf 'lee\\\\n' | sudo -S cp /home/lee/Desktop/project2/web/style.css /var/www/html/ 2>/dev/null\nprintf 'lee\\\\n' | sudo -S chown -R www-data:www-data /var/www/html/ 2>/dev/null\necho \"Web files deployed\"\nls /var/www/html/)",
+      "Bash(printf 'lee\\\\n' | sudo -S bash -c 'cp /home/lee/Desktop/project2/web/index.php /var/www/html/ && cp /home/lee/Desktop/project2/web/monitor.php /var/www/html/ && cp /home/lee/Desktop/project2/web/api.php /var/www/html/ && cp /home/lee/Desktop/project2/web/style.css /var/www/html/ && chown -R www-data:www-data /var/www/html/ && echo OK' 2>/dev/null)",
+      "Bash(pip3 install pymysql faker --break-system-packages 2>&1 | tail -5)",
+      "Bash(python3 -m pip install pymysql faker --break-system-packages 2>&1 | tail -5)",
+      "Bash(printf 'lee\\\\n' | sudo -S bash -c 'apt-get install -y python3-pymysql python3-faker 2>&1 | tail -5' 2>/dev/null)",
+      "Bash(printf 'lee\\\\n' | sudo -S bash -c 'apt-get install -y python3-pymysql python3-pip 2>&1 | tail -3' 2>/dev/null)",
+      "Bash(pip3 install faker --break-system-packages 2>&1 | tail -3)",
+      "Bash(python3 -c \"import pymysql, faker; print\\('pymysql:', pymysql.__version__, '| faker: OK'\\)\")",
+      "Bash(curl -s http://localhost/api.php | head -20)",
+      "Bash(curl -s http://localhost/index.php | grep -E \"\\(total_rows|센서|SENS|recorded_at\\)\" | head -10)",
+      "Bash(git config --global user.name 2>/dev/null\ngit config --global user.email 2>/dev/null\ngh auth status 2>&1 | head -5)",
+      "Bash(gh --version 2>/dev/null || echo \"gh CLI not installed\"\ngit --version 2>/dev/null)",
+      "Bash(\\\\\ngit init && \\\\\ngit config user.name \"2101070-LJI\" && \\\\\ngit config user.email \"2101070-LJI@github.com\" && \\\\\ngit add . && \\\\\ngit status)"
+    ]
+  }
+}

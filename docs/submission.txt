@@ -1,0 +1,27 @@
+============================================================
+  캡스톤 디자인 / 임베디드 리눅스 — 3주차 과제 제출
+============================================================
+
+[GitHub Repository]
+URL: https://github.com/2101070-LJI/lamp-iot-monitor
+
+[동작 영상]
+URL: (동작 영상 촬영 후 YouTube/Google Drive 링크 입력)
+
+[제출자 정보]
+이름:
+학번:
+날짜:
+
+[주요 구현 내용]
+1. VMware + Ubuntu 24.04 LTS 환경 구성
+2. LAMP 스택 (Apache2 + MySQL + PHP 8.x) 설치
+3. Python injector.py — 5종 가상 센서 데이터 5초 간격 MySQL 주입
+4. PHP 동적 대시보드 — Chart.js 실시간 그래프 + 5초 자동 갱신
+5. GitHub 레포지토리 push 및 process.md (Mermaid 블록도) 작성
+
+[접속 URL (VM 내부)]
+- 메인 대시보드 : http://localhost/index.php
+- 텍스트 모니터 : http://localhost/monitor.php
+- JSON API      : http://localhost/api.php
+============================================================
